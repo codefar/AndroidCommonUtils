@@ -37,7 +37,13 @@ public class IOUtils {
             return;
         }
         for (final Closeable closeable : closeables) {
-            closeQuietly(closeable);
+            try {
+                if (closeable != null) {
+                    closeable.close();
+                }
+            } catch (final IOException ioe) {
+                // ignore
+            }
         }
     }
 

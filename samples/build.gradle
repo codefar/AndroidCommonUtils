@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'org.davy.commons.gradle'
+apply plugin: org.davy.commons.plugin.InjectPlugin
 
 android {
     compileSdkVersion 25
@@ -17,6 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {
