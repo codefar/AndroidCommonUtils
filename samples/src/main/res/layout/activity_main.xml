@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.davy.commons.samples.MainActivity">
+    tools:context="org.davy.utils.samples.MainActivity">
 
 </android.support.constraint.ConstraintLayout>
