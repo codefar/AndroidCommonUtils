@@ -54,7 +54,7 @@ public class InjectTransform extends Transform {
             //对类型为“文件夹”的input进行遍历
             input.directoryInputs.each { DirectoryInput directoryInput ->
                 //文件夹里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-                MyInject.injectDir(directoryInput.file.absolutePath, "org/davy/commons/samples")
+                Injecter.injectDir(directoryInput.file.absolutePath, "org/davy/commons/samples")
                 // 获取output目录
                 def dest = transformInvocation.outputProvider.getContentLocation(directoryInput.name,
                         directoryInput.contentTypes, directoryInput.scopes,

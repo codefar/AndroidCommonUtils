@@ -8,10 +8,10 @@ import javassist.ClassPool
 import javassist.CtClass
 import javassist.CtConstructor
 
-public class MyInject {
+public class Injecter {
 
     private static ClassPool pool = ClassPool.getDefault()
-    private static String injectStr = "System.out.println(\"inject MyInject\" ); ";
+    private static String injectStr = "System.out.println(\"inject Injecter\" ); ";
 
     public static void injectDir(String path, String packageName) {
         println(path + " " + packageName)
