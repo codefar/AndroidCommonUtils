@@ -4,10 +4,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import org.greenleaf.utils.IOUtils;
-import org.greenleaf.utils.NetworkUtil;
 import org.greenleaf.utils.XmlUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -27,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         ActivityInfo[] activities = packageInfo.activities;
         activities[0].getThemeResource();
 
-        Toast.makeText(this, NetworkUtil.getCurrentIp(this), Toast.LENGTH_LONG).show();
         InputStream inputStream = null;
         try {
             inputStream = getAssets().open("AndroidManifest.xml");

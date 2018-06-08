@@ -6,10 +6,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
-
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.novoda:bintray-release:0.8.1'
     }
 }
 
@@ -21,4 +19,14 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    userOrg = 'davy'
+    groupId = 'org.greenleaf.utils'
+    uploadName = 'greenleaf.utils'
+    publishVersion = '1.0.0'
+    desc = 'useful tool for android'
+    website = 'https://github.com/davyjoneswang/AndroidCommonUtils'
+    licences = ['Apache-2.0']
 }

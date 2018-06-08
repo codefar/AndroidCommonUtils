@@ -12,7 +12,7 @@ import org.gradle.api.Project
 
 public class InjectTransform extends Transform {
 
-    Project project;
+    Project project
 
     InjectTransform(Project project) {
         this.project = project
@@ -20,22 +20,22 @@ public class InjectTransform extends Transform {
 
     @Override
     String getName() {
-        return this.class.simpleName;
+        return this.class.simpleName
     }
 
     @Override
     Set<QualifiedContent.ContentType> getInputTypes() {
-        return TransformManager.CONTENT_CLASS;
+        return TransformManager.CONTENT_CLASS
     }
 
     @Override
     Set<QualifiedContent.ContentType> getOutputTypes() {
-        return TransformManager.CONTENT_CLASS;
+        return TransformManager.CONTENT_CLASS
     }
 
     @Override
     Set<? super QualifiedContent.Scope> getScopes() {
-        return TransformManager.SCOPE_FULL_PROJECT;
+        return TransformManager.SCOPE_FULL_PROJECT
     }
 
     @Override
@@ -47,7 +47,7 @@ public class InjectTransform extends Transform {
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
 
-        println this.class.simpleName + "transform start";
+        println this.class.simpleName + "transform start"
 
         // Transform的inputs有两种类型，一种是目录，一种是jar包，要分开遍历
         transformInvocation.inputs.each { TransformInput input ->
@@ -87,6 +87,6 @@ public class InjectTransform extends Transform {
             }
         }
 
-        println this.class.simpleName +  " transform end";
+        println this.class.simpleName +  " transform end"
     }
 }
