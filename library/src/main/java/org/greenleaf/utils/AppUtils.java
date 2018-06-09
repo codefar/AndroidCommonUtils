@@ -10,25 +10,8 @@ import android.graphics.drawable.Drawable;
 
 import java.util.List;
 
-import javax.security.auth.x500.X500Principal;
-
-/**
- * @author： wlj
- * @Date: 2017-03-28
- * @email: wanglijundev@gmail.com
- * @desc: App 相关信息，包括版本名称、版本号、包名等等
- */
-
 public class AppUtils {
-    private final static X500Principal DEBUG_DN = new X500Principal(
-            "CN=Android Debug,O=Android,C=US");
 
-    /**
-     * Get version name
-     *
-     * @param context
-     * @return
-     */
     public static String getVersionName(Context context) {
         PackageInfo info;
         try {
@@ -40,12 +23,6 @@ public class AppUtils {
         return "";
     }
 
-    /**
-     * Get version code
-     *
-     * @param context
-     * @return
-     */
     public static int getVersionCode(Context context) {
         PackageInfo info;
         try {
@@ -57,33 +34,14 @@ public class AppUtils {
         return 0;
     }
 
-    /**
-     * Get package name
-     *
-     * @param context
-     * @return
-     */
     public static String getPackageName(Context context) {
         return context.getPackageName();
     }
 
-    /**
-     * Get icon
-     *
-     * @param context
-     * @return
-     */
     public static Drawable getIcon(Context context) {
         return getAppIcon(context, getPackageName(context));
     }
 
-    /**
-     * Get app icon
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static Drawable getAppIcon(Context context, String packageName) {
         try {
             PackageManager pm = context.getPackageManager();
@@ -95,13 +53,6 @@ public class AppUtils {
         return null;
     }
 
-    /**
-     * Get app version name
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static String getAppVersionName(Context context, String packageName) {
         try {
             PackageManager pm = context.getPackageManager();
@@ -113,13 +64,6 @@ public class AppUtils {
         return null;
     }
 
-    /**
-     * Get app version code
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static int getAppVersionCode(Context context, String packageName) {
         try {
             PackageManager pm = context.getPackageManager();
@@ -131,13 +75,6 @@ public class AppUtils {
         return -1;
     }
 
-    /**
-     * Get app name
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static String getAppName(Context context, String packageName) {
         try {
             PackageManager pm = context.getPackageManager();
@@ -149,13 +86,6 @@ public class AppUtils {
         return null;
     }
 
-    /**
-     * Get app permission
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static String[] getAppPermission(Context context, String packageName) {
         try {
             PackageManager pm = context.getPackageManager();
@@ -167,13 +97,6 @@ public class AppUtils {
         return null;
     }
 
-    /**
-     * Get app signature
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static String getAppSignature(Context context, String packageName) {
         try {
             PackageManager pm = context.getPackageManager();
@@ -185,12 +108,6 @@ public class AppUtils {
         return null;
     }
 
-    /**
-     * Judge whether an app is dubuggable
-     *
-     * @param context
-     * @return
-     */
     public static boolean isApkDebuggable(Context context) {
         try {
             ApplicationInfo info = context.getApplicationInfo();
@@ -201,13 +118,6 @@ public class AppUtils {
         return false;
     }
 
-    /**
-     * Judge whether an app is dubuggable by package name
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
     public static boolean isApkDebugable(Context context, String packageName) {
         try {
             PackageInfo pkginfo = context.getPackageManager().getPackageInfo(
@@ -221,12 +131,6 @@ public class AppUtils {
         return false;
     }
 
-    /**
-     * Judge whether an app is in background
-     *
-     * @param context
-     * @return
-     */
     public static boolean isAppInBackground(Context context) {
         ActivityManager am = (ActivityManager) context
                 .getSystemService(Context.ACTIVITY_SERVICE);

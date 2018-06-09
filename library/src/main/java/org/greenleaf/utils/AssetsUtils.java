@@ -14,32 +14,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * @desc: Assets操作
+ * Assets操作
  */
-
 public class AssetsUtils {
     private static final String ENCODING = "UTF-8";
 
-    /**
-     * 从assets获取文件
-     *
-     * @param context
-     * @param fileName
-     * @return
-     * @throws IOException
-     */
     public static InputStream getFileFromAssets(@NonNull Context context, String fileName) throws IOException {
         AssetManager am = context.getAssets();
         return am.open(fileName);
     }
 
-    /**
-     * 从assets获取文本文件
-     *
-     * @param context
-     * @param fileName
-     * @return
-     */
     @WorkerThread
     public static String asset2String(@NonNull Context context, String fileName) {
 

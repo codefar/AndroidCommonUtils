@@ -9,8 +9,6 @@ public class SystemUtils {
 
     /**
      * ART
-     *
-     * @return
      */
     public static boolean isART() {
         final String vmVersion = System.getProperty("java.vm.version");
@@ -19,8 +17,6 @@ public class SystemUtils {
 
     /**
      * DALVIK
-     *
-     * @return
      */
     public static boolean isDalvik() {
         final String vmVersion = System.getProperty("java.vm.version");
@@ -28,18 +24,14 @@ public class SystemUtils {
     }
 
     /**
-     * The brand (e.g., Xiaomi) the software is customized for, if any.
-     *
-     * @return
+     * The brand
      */
     public static String getBrand() {
         return Build.BRAND;
     }
 
     /**
-     * The name of the underlying board, like "MSM8660_SURF".
-     *
-     * @return
+     * The board
      */
     public static String getBoard() {
         return Build.BOARD;
@@ -47,8 +39,6 @@ public class SystemUtils {
 
     /**
      * The end-user-visible name for the end product, like "MI-ONE Plus".
-     *
-     * @return
      */
     public static String getModel() {
         return Build.MODEL;
@@ -56,8 +46,6 @@ public class SystemUtils {
 
     /**
      * Either a changelist number, or a label like "JZO54K".
-     *
-     * @return
      */
     public static String getID() {
         return Build.ID;
@@ -65,8 +53,6 @@ public class SystemUtils {
 
     /**
      * The user-visible version string, like "4.1.2".
-     *
-     * @return
      */
     public static String getVersionRelease() {
         return Build.VERSION.RELEASE;
@@ -74,8 +60,6 @@ public class SystemUtils {
 
     /**
      * The user-visible SDK version of the framework.
-     *
-     * @return
      */
     public static int getVersionSDK() {
         return Build.VERSION.SDK_INT;
@@ -83,8 +67,6 @@ public class SystemUtils {
 
     /**
      * A string that uniquely identifies this build. Do not attempt to parse this value.
-     *
-     * @return
      */
     public static String getFingerPrint() {
         return Build.FINGERPRINT;
@@ -92,8 +74,6 @@ public class SystemUtils {
 
     /**
      * The name of the overall product, like "mione_plus".
-     *
-     * @return
      */
     public static String getProduct() {
         return Build.PRODUCT;
@@ -101,8 +81,6 @@ public class SystemUtils {
 
     /**
      * The manufacturer of the product/hardware, like "Xiaomi".
-     *
-     * @return
      */
     public static String getManufacturer() {
         return Build.MANUFACTURER;
@@ -110,8 +88,6 @@ public class SystemUtils {
 
     /**
      * The name of the industrial design, like "mione_plus".
-     *
-     * @return
      */
     public static String getDevice() {
         return Build.DEVICE;
@@ -119,8 +95,6 @@ public class SystemUtils {
 
     /**
      * The name of the instruction set (CPU type + ABI convention) of native code, like "armeabi-v7a".
-     *
-     * @return
      */
     public static String getCpuAbi() {
         return Build.CPU_ABI;
@@ -128,8 +102,6 @@ public class SystemUtils {
 
     /**
      * The name of the second instruction set (CPU type + ABI convention) of native code, like "armeabi".
-     *
-     * @return
      */
     public static String getCpuAbi2() {
         return Build.CPU_ABI2;
@@ -137,8 +109,6 @@ public class SystemUtils {
 
     /**
      * A build ID string meant for displaying to the user, like "JZO54K".
-     *
-     * @return
      */
     public static String getDisplay() {
         return Build.DISPLAY;

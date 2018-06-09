@@ -6,11 +6,7 @@ import android.support.annotation.StringRes;
 import android.widget.Toast;
 
 /**
- * @author wlj
- * @date 2017/3/28
- * @email wanglijundev@gmail.com
- * @packagename wanglijun.vip.androidutils
- * @description Toast封装类
+ * Toast封装类
  */
 public class ToastUtil {
 

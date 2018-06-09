@@ -20,12 +20,6 @@ public class BitmapUtils {
         return bitmap;
     }
 
-    /**
-     * Convert view to bitmap
-     *
-     * @param view
-     * @return
-     */
     public static Bitmap convertViewToBitmap(View view) {
         return convertViewToBitmap(view, UNSPECIFIED, UNSPECIFIED);
     }

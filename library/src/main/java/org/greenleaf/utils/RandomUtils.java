@@ -7,12 +7,7 @@ import java.util.Random;
  */
 
 public class RandomUtils {
-    /**
-     * Returns a pseudo-random uniformly distributed {@code int}.
-     * 返回伪随机均匀分布
-     *
-     * @return
-     */
+
     public static int randomInt() {
         Random random = new Random();
         return random.nextInt();

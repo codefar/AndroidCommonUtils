@@ -7,56 +7,27 @@ import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 
 public class DisplayUtils {
-    /**
-     * Get screen width, in pixels
-     *
-     * @param context
-     * @return
-     */
+
     public static int getScreenWidth(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.widthPixels;
     }
 
-    /**
-     * Get screen height, in pixels
-     *
-     * @param context
-     * @return
-     */
     public static int getScreenHeight(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.heightPixels;
     }
 
-    /**
-     * Get screen density, the logical density of the display
-     *
-     * @param context
-     * @return
-     */
     public static float getScreenDensity(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.density;
     }
 
-    /**
-     * Get screen density dpi, the screen density expressed as dots-per-inch
-     *
-     * @param context
-     * @return
-     */
     public static int getScreenDensityDPI(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.densityDpi;
     }
 
-    /**
-     * Get statusbar height
-     *
-     * @param activity
-     * @return
-     */
     public static int getStatusBarHeight(@NonNull Activity activity) {
         Rect rect = new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);

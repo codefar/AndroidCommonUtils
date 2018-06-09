@@ -25,7 +25,7 @@ ext {
     userOrg = 'davy'
     groupId = 'org.greenleaf.utils'
     uploadName = 'greenleaf.utils'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'useful tool for android'
     website = 'https://github.com/davyjoneswang/AndroidCommonUtils'
     licences = ['Apache-2.0']

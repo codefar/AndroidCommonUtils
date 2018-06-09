@@ -14,14 +14,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author wlj
- * @date 2017/3/29
- * @email wanglijundev@gmail.com
- * @packagename wanglijun.vip.androidutils.utils
- * @desc: 包的相关操作
- */
-
 public class PackageUtils {
 
     public static boolean checkPermission(@NonNull Context context, String permName, String pkgName) {
