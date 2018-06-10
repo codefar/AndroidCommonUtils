@@ -1,15 +1,19 @@
 apply plugin: 'groovy'
 apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'maven'
 
 publish {
     artifactId = 'injectplugin'
     userOrg = rootProject.ext.userOrg
+    repoName = rootProject.ext.repoName
     groupId = rootProject.ext.groupId
     uploadName = rootProject.ext.uploadName
     publishVersion = rootProject.ext.publishVersion
     desc = rootProject.ext.desc
     website = rootProject.ext.website
     licences = rootProject.ext.licences
+    bintrayUser = BINTRAY_USER
+    bintrayKey = BINTRAY_KEY
 }
 
 dependencies {
@@ -20,6 +24,16 @@ dependencies {
     compile 'org.javassist:javassist:3.20.0-GA'
 }
 
-repositories {
-    jcenter()
+
+//设置maven deployer
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'injectplugin'
+            pom.groupId = 'org.greenleaf.utils'
+            pom.version = '1.0.0'
+            //文件发布到下面目录
+            repository(url: uri('../repo'))
+        }
+    }
 }

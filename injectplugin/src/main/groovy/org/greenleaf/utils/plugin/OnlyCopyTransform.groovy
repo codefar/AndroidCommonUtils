@@ -5,16 +5,13 @@ import com.android.build.gradle.internal.pipeline.TransformManager
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
-
-import java.util.function.Consumer
-
 /**
  * Created by davy on 2017/6/8.
  */
 
 public class OnlyCopyTransform extends Transform {
 
-    Project project;
+    Project project
 
     OnlyCopyTransform(Project project) {
         this.project = project
@@ -22,22 +19,22 @@ public class OnlyCopyTransform extends Transform {
 
     @Override
     String getName() {
-        return this.class.simpleName;
+        return this.class.simpleName
     }
 
     @Override
     Set<QualifiedContent.ContentType> getInputTypes() {
-        return TransformManager.CONTENT_CLASS;
+        return TransformManager.CONTENT_CLASS
     }
 
     @Override
     Set<QualifiedContent.ContentType> getOutputTypes() {
-        return TransformManager.CONTENT_CLASS;
+        return TransformManager.CONTENT_CLASS
     }
 
     @Override
     Set<? super QualifiedContent.Scope> getScopes() {
-        return TransformManager.SCOPE_FULL_PROJECT;
+        return TransformManager.SCOPE_FULL_PROJECT
     }
 
     @Override
@@ -48,7 +45,7 @@ public class OnlyCopyTransform extends Transform {
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
-        println this.class.simpleName +  " transform start";
+        println this.class.simpleName +  " transform start"
 
         // Transform的inputs有两种类型，一种是目录，一种是jar包，要分开遍历
         transformInvocation.inputs.each { TransformInput input ->
@@ -87,6 +84,6 @@ public class OnlyCopyTransform extends Transform {
             }
         }
 
-        println this.class.simpleName +  " transform end";
+        println this.class.simpleName +  " transform end"
     }
 }

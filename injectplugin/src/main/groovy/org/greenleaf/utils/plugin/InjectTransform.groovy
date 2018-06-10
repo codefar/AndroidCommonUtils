@@ -5,6 +5,8 @@ import com.android.build.gradle.internal.pipeline.TransformManager
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * Created by davy on 2017/6/8.
@@ -12,10 +14,14 @@ import org.gradle.api.Project
 
 public class InjectTransform extends Transform {
 
-    Project project
+    Logger mLogger = LoggerFactory.getLogger(Injecter.class)
 
-    InjectTransform(Project project) {
+    Project project
+    InjectExtension injectExtension
+
+    InjectTransform(Project project, InjectExtension injectExtension) {
         this.project = project
+        this.injectExtension = injectExtension
     }
 
     @Override
@@ -47,29 +53,32 @@ public class InjectTransform extends Transform {
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
 
-        println this.class.simpleName + "transform start"
+        println this.class.simpleName +  " transform start."
+        mLogger.info("{} transform start. ", this.class.simpleName)
 
         // Transform的inputs有两种类型，一种是目录，一种是jar包，要分开遍历
         transformInvocation.inputs.each { TransformInput input ->
             //对类型为“文件夹”的input进行遍历
             input.directoryInputs.each { DirectoryInput directoryInput ->
+
                 //文件夹里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-                Injecter.injectDir(directoryInput.file.absolutePath, "org/davy/commons/samples")
+                List<String> stringList = new ArrayList<>()
+                stringList.addAll(injectExtension.injectPackages)
+                println "inject path: " + stringList.toString()
+
+                Injecter.injectDir(project, directoryInput.file.absolutePath, stringList)
+
                 // 获取output目录
                 def dest = transformInvocation.outputProvider.getContentLocation(directoryInput.name,
                         directoryInput.contentTypes, directoryInput.scopes,
                         Format.DIRECTORY)
-
-                println "Directory:" + directoryInput.name + " " +  directoryInput.contentTypes + " " + directoryInput.file.getAbsolutePath()
-                println " Output:" + dest.getAbsolutePath()
                 // 将input的目录复制到output指定目录
                 FileUtils.copyDirectory(directoryInput.file, dest)
             }
             //对类型为jar文件的input进行遍历
             input.jarInputs.each { JarInput jarInput ->
 
-                //jar文件一般是第三方依赖库jar文件
-                // 重命名输出文件（同目录copyFile会冲突）
+                //jar文件一般是第三方依赖库jar文件 重命名输出文件（同目录copyFile会冲突）
                 def jarName = jarInput.name
                 def md5Name = DigestUtils.md5Hex(jarInput.file.getAbsolutePath())
 
@@ -80,13 +89,11 @@ public class InjectTransform extends Transform {
                 def dest = transformInvocation.outputProvider.getContentLocation(jarName + md5Name,
                         jarInput.contentTypes, jarInput.scopes, Format.JAR)
                 //将输入内容复制到输出
-
-                println "JAR:" + jarName + " " + jarInput.contentTypes + " " + jarInput.file.getAbsolutePath() + " " + md5Name
-                println " Output:" + dest.getAbsolutePath()
                 FileUtils.copyFile(jarInput.file, dest)
             }
         }
 
         println this.class.simpleName +  " transform end"
+        mLogger.info("{} transform end. ", this.class.simpleName)
     }
 }
