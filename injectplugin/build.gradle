@@ -4,11 +4,12 @@ apply plugin: 'maven'
 
 publish {
     artifactId = 'injectplugin'
+    uploadName = 'AndroidInjectPlugin'
+    publishVersion = '1.0.1'
+
     userOrg = rootProject.ext.userOrg
     repoName = rootProject.ext.repoName
     groupId = rootProject.ext.groupId
-    uploadName = rootProject.ext.uploadName
-    publishVersion = rootProject.ext.publishVersion
     desc = rootProject.ext.desc
     website = rootProject.ext.website
     licences = rootProject.ext.licences

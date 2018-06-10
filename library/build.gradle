@@ -3,14 +3,17 @@ apply plugin: 'com.novoda.bintray-release'
 
 publish {
     artifactId = 'utils'
-    userOrg = 'davy'
-    repoName = "maven"
-    groupId = 'org.greenleaf.utils'
     uploadName = 'AndroidCommonUtils'
     publishVersion = '1.0.0'
-    desc = 'useful tool for android'
-    website = 'https://github.com/davyjoneswang/AndroidCommonUtils'
-    licences = ['Apache-2.0']
+
+    userOrg = rootProject.ext.userOrg
+    repoName = rootProject.ext.repoName
+    groupId = rootProject.ext.groupId
+    desc = rootProject.ext.desc
+    website = rootProject.ext.website
+    licences = rootProject.ext.licences
+    bintrayUser = BINTRAY_USER
+    bintrayKey = BINTRAY_KEY
 }
 
 android {
