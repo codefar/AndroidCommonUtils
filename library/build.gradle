@@ -1,20 +1,18 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'maven-publish'
 
-publish {
-    artifactId = 'utils'
-    uploadName = 'AndroidCommonUtils'
-    publishVersion = '1.0.0'
-
-    userOrg = rootProject.ext.userOrg
-    repoName = rootProject.ext.repoName
-    groupId = rootProject.ext.groupId
-    desc = rootProject.ext.desc
-    website = rootProject.ext.website
-    licences = rootProject.ext.licences
-    bintrayUser = BINTRAY_USER
-    bintrayKey = BINTRAY_KEY
-}
+//publish {
+//    artifactId = 'utils'
+//    uploadName = 'AndroidCommonUtils'
+//    publishVersion = '1.0.0'
+//
+//    userOrg = rootProject.ext.userOrg
+//    repoName = rootProject.ext.repoName
+//    groupId = rootProject.ext.groupId
+//    desc = rootProject.ext.desc
+//    website = rootProject.ext.website
+//    licences = rootProject.ext.licences
+//}
 
 android {
     compileSdkVersion 25
@@ -22,8 +20,6 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -38,6 +34,10 @@ android {
         abortOnError false
         checkReleaseBuilds false
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 tasks.withType(Javadoc) {
@@ -49,10 +49,42 @@ tasks.withType(Javadoc) {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    testCompile 'junit:junit:4.12'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support:appcompat-v7:25.4.0'
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = rootProject.ext.groupId
+                artifactId = 'utils'
+                version = rootProject.ext.version
+
+                // 上传source，这样使用方可以看到方法注释
+                artifact generateSourcesJar
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = rootProject.ext.groupId
+                artifactId = 'utils'
+                version = rootProject.ext.version + "-SNAPSHOT"
+                // 上传source，这样使用方可以看到方法注释
+                artifact generateSourcesJar
+            }
+        }
+    }
 }

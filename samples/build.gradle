@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenleaf.utils.injectplugin'
+//apply plugin: 'org.greenleaf.utils.injectplugin'
 
-injectplugin {
-    message = "this is test Message."
-    injectPackages = ["org.greenleaf.utils.samples", "com.google.utils"]
-}
+//injectplugin {
+//    message = "this is test Message."
+//    injectPackages = ["org.greenleaf.utils.samples", "com.google.utils"]
+//}
 
 android {
     compileSdkVersion 25
@@ -23,41 +23,34 @@ android {
         }
     }
     buildToolsVersion '25.0.3'
-}
 
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    testCompile 'junit:junit:4.12'
-}
-
-
-class GreetingPluginExtension {
-    String message
-    String greeter
-}
-
-class GreetingExtensionPlugin implements Plugin<Project> {
-    void apply(Project project) {
-        // Add the 'greeting' extension object
-        def extension = project.extensions.create('greeting', GreetingPluginExtension)
-        // Add a task that uses configuration from the extension object
-        project.task('GreetingHelloExtension') {
-            doLast {
-                println extension.message
-                println extension.greeter
-                println "${extension.message} from ${extension.greeter}"
-            }
-        }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
-apply plugin: GreetingExtensionPlugin
-
-greeting {
-    message = 'Hi'
-    greeter = 'Gradle'
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation project(path: ':library')
 }
+//
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//        google()
+//        maven{
+//            url uri('../repo')
+//        }
+//    }
+//    dependencies {
+//        classpath 'org.greenleaf.utils:injectplugin:1.0.0'
+//    }
+//}

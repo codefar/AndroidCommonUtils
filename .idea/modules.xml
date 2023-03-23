@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidCommonUtils.iml" filepath="$PROJECT_DIR$/AndroidCommonUtils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/injectplugin/injectplugin.iml" filepath="$PROJECT_DIR$/injectplugin/injectplugin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/samples/samples.iml" filepath="$PROJECT_DIR$/samples/samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidCommonUtils.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidCommonUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/injectplugin/AndroidCommonUtils.injectplugin.iml" filepath="$PROJECT_DIR$/.idea/modules/injectplugin/AndroidCommonUtils.injectplugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/injectplugin/AndroidCommonUtils.injectplugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/injectplugin/AndroidCommonUtils.injectplugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/injectplugin/AndroidCommonUtils.injectplugin.test.iml" filepath="$PROJECT_DIR$/.idea/modules/injectplugin/AndroidCommonUtils.injectplugin.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/AndroidCommonUtils.library.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/AndroidCommonUtils.samples.unitTest.iml" />
     </modules>
   </component>
 </project>

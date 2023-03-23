@@ -1,1 +1,2 @@
-include ':samples', ':library', ':injectplugin'
+include ':samples', ':library'
+//, ':injectplugin'

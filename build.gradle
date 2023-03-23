@@ -4,14 +4,9 @@ buildscript {
     repositories {
         jcenter()
         google()
-        maven{
-            url uri('./repo')
-        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.novoda:bintray-release:0.8.1'
-        classpath 'org.greenleaf.utils:injectplugin:1.0.0'
+        classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
 
@@ -30,6 +25,7 @@ ext {
     userOrg = 'davy'
     repoName = "maven"
     groupId = 'org.greenleaf.utils'
+    version = '1.0.0'
     desc = 'useful tool for android'
     website = 'https://github.com/davyjoneswang/AndroidCommonUtils'
     licences = ['Apache-2.0']

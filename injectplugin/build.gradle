@@ -1,40 +1,35 @@
 apply plugin: 'groovy'
-apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'maven'
-
-publish {
-    artifactId = 'injectplugin'
-    uploadName = 'AndroidInjectPlugin'
-    publishVersion = '1.0.1'
-
-    userOrg = rootProject.ext.userOrg
-    repoName = rootProject.ext.repoName
-    groupId = rootProject.ext.groupId
-    desc = rootProject.ext.desc
-    website = rootProject.ext.website
-    licences = rootProject.ext.licences
-    bintrayUser = BINTRAY_USER
-    bintrayKey = BINTRAY_KEY
-}
+apply plugin: 'maven-publish'
 
 dependencies {
     compile gradleApi()//gradle sdk
     compile localGroovy()
-    compile 'com.android.tools.build:gradle:2.3.3'
+    compile 'com.android.tools.build:gradle:3.2.0'
     compile 'org.apache.commons:commons-io:1.3.2'
     compile 'org.javassist:javassist:3.20.0-GA'
 }
 
+task generateSourcesJar(type: Jar) {
+    from sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
 
-//设置maven deployer
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            pom.artifactId = 'injectplugin'
-            pom.groupId = 'org.greenleaf.utils'
-            pom.version = '1.0.0'
-            //文件发布到下面目录
-            repository(url: uri('../repo'))
+//发布maven库
+publishing {
+    //配置maven-publishing插件的输出物
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            //发布仓库的文件路径
+            groupId = rootProject.ext.groupId
+            //库名
+            artifactId = 'injectplugin'
+            //版本号
+            version = rootProject.ext.version
+            //指定打包路径
+            // artifact "$buildDir/outputs/aar/${project.name}-release.aar"
+            // 上传source，这样使用方可以看到方法注释
+            artifact generateSourcesJar
         }
     }
 }

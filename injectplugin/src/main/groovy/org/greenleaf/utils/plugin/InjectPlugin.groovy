@@ -18,12 +18,13 @@ public class InjectPlugin implements Plugin<Project> {
 
         def injectExtension = project.extensions.create('injectplugin', InjectExtension)
         println(injectExtension) //这里返回空，afterEvaluate才能获得值
+        mLogger.info("========================")
 
         project.afterEvaluate {
             println(injectExtension)
         }
 
-        project.android.registerTransform(new OnlyCopyTransform(project))
+//        project.android.registerTransform(new OnlyCopyTransform(project))
         project.android.registerTransform(new InjectTransform(project, injectExtension))
 
     }
